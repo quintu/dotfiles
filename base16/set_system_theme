@@ -1,0 +1,11 @@
+#!/bin/bash
+cp $HOME/.config/base16/output/kitty/colors/base16-$1-256.conf $HOME/.config/base16/kitty_base16_theme.conf 
+#kitty @ set-colors --all --configured $HOME/.config/kitty/kitty.conf
+
+cp $HOME/.config/base16/output/xresources/xresources/base16-$1-256.Xresources $HOME/.config/base16/X_base16_theme
+xrdb $HOME/.config/base16/X_base16_theme
+
+cp $HOME/.config/base16/output/bspwm/colors/base16-$1.conf  $HOME/.config/base16/bspwm_base16_theme
+$HOME/.config/bspwm/bspwmrc
+
+cp $HOME/.config/base16/output/vim/colors/base16-$1.vim $HOME/.config/base16/vim_base16_theme.vim

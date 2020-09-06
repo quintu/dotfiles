@@ -1,0 +1,15 @@
+#!/bin/zsh
+if [ -z $PS1 ] 
+	# z flag: true if string is null
+	
+then # non-interactive shell
+	#bash -c kitty
+	kitty @ --to unix:/tmp/mykitty launch --type os-window nano 
+	#kitty @ launch --type=os-window zsh -c nano	
+	echo "hello" > $HOME/log
+	echo $PS1
+	echo $PROMPT
+else # interactive shell
+	kitty @ launch --type=os-window zsh -c nano
+	echo 'hi'
+fi

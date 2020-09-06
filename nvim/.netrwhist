@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/home/quint/bin/pywal/pywal'
+let g:netrw_dirhist_3='/home/quint/.config/base16-shell'
+let g:netrw_dirhist_2='/home/quint/.config/nvim/config'
+let g:netrw_dirhist_1='/home/quint/.config/nvim/lua/lsp'
+let g:netrw_dirhist_0='/'
+let g:netrw_dirhist_9='/home'
+let g:netrw_dirhist_8='/home/quint'
+let g:netrw_dirhist_7='/home/quint/.config'
+let g:netrw_dirhist_6='/home/quint/.config/nvim'
+let g:netrw_dirhist_5='/home/quint/.config/nvim/config'

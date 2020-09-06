@@ -1,0 +1,32 @@
+#!/bin/sh
+
+# Kill/remove before running so we don't get duplicates
+bspc rule -r "*"
+pkill sxhkd
+pkill 2bspwm
+
+###----Autostart
+sxhkd &
+$HOME/.fehbg &
+
+###----Monitor
+bspc monitor -d 1 2 3 4 5 6
+
+
+###----Global Settings
+bspc config focus_follows_pointer true
+bspc config borderless_monocle true
+bspc config gapless_monocle true
+bspc config automatic_scheme alternate
+
+BW=12
+bspc config border_width $BW
+bspc config window_gap -$(($BW - $(($BW/4))))
+for side in top right bottom left ; do
+	bspc config ${side}_padding 0
+	#-$(($BW - 10))
+done
+
+$HOME/.config/bspwm/2bspwm &
+###----Colors
+#source $HOME/.config/base16/bspwm_base16_theme
