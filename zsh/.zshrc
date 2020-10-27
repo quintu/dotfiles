@@ -48,9 +48,16 @@ if [ -f "$LFCD" ]; then
 fi
 alias lf='lfcd'
 
+# Load direnv
+eval "$(direnv hook zsh)"
 ########## ALIASES ##########
 alias ls='exa -a'
 #alias n='nnn -H'
+alias gitb='git --no-pager branch'
+
+#dotfiles config
+#https://wiki.archlinux.org/index.php/Dotfiles
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 alias -s {pdf,PDF}=zathura
 function vi() {

@@ -1,4 +1,6 @@
-let g:python3_host_prog="$HOME/miniconda3/bin/python"
+let g:python3_host_prog="$HOME/.config/nvim/env/bin/python"
+"let g:formatdef_yapf='"
+let b:formatters_python = ['yapf']
 let g:tmux_navigator_save_on_switch = 1
 let g:mapleader = ';'
 set hidden
@@ -16,15 +18,22 @@ set completeopt=menuone,preview,noinsert,noselect
 set shiftwidth=4
 "set colorcolumn=80
 set scrolloff=3
-filetype plugin indent on
-syntax enable
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 set foldnestmax=3
 
+filetype plugin indent on
+syntax enable
+
 let g:UltiSnipsExpandTrigger="<leader>s"
 let g:UltiSnipsJumpForwardTrigger="<leader>j"
 let g:UltiSnipsJumpBackwardTrigger="<leader>k"
+
+"Set custom syntax highlighting for certain filetypes
+augroup syntax_highlighting
+    au!
+    au BufWinEnter,BufRead,BufNewFile *.envrc set filetype=bash
+augroup END
 
 "Enter insert mode in when entering terminal buffer
 "Leave insert mode when leaving terminal buffer
@@ -34,10 +43,10 @@ augroup bufterm
     "au BufLeave term://* stopinsert
 augroup END
 
-"Run autoformatter when saving buffer
+" Save file when leaving buffer
 augroup bufleave
     au!
-    au BufWritePre * silent :Autoformat()
+    " au BufWritePre * silent :Autoformat()
     au BufLeave * update
 augroup END
 
@@ -58,9 +67,9 @@ augroup vimrcsave
 augroup END
 
 
-function! Autoformat() abort
-    if &buftype ==# ""
-	:Autoformat
-    endif
-endfunction
+" function! Autoformat() abort
+"     if &buftype ==# ""
+"	:Autoformat
+"     endif
+" endfunction
 

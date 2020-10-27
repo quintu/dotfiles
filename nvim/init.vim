@@ -6,7 +6,8 @@ call plug#begin()
 Plug 'bluz71/vim-moonfly-colors'
 Plug 'bluz71/vim-nightfly-guicolors'
 Plug 'itchyny/lightline.vim'
-Plug 'mengelbrecht/lightline-bufferline'
+"Plug 'mengelbrecht/lightline-bufferline'
+Plug 'jlanzarotta/bufexplorer'
 
 Plug 'neovim/nvim-lsp'
 Plug 'nvim-lua/completion-nvim'
