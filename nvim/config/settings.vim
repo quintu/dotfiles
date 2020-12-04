@@ -1,6 +1,8 @@
 let g:python3_host_prog="$HOME/.config/nvim/env/bin/python"
-"let g:formatdef_yapf='"
-let b:formatters_python = ['yapf']
+" let g:autoformat_autoindent = 0
+" let g:autoformat_retab = 0
+" let g:formatdef_yapf="'yapf -i --style $HOME/.config/yapf/style'"
+" let b:formatters_python = ['yapf']
 let g:tmux_navigator_save_on_switch = 1
 let g:mapleader = ';'
 set hidden
@@ -21,6 +23,8 @@ set scrolloff=3
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 set foldnestmax=3
+
+let g:ale_virtualenv_dir_names=["$HOME/.config/nvim/env"]
 
 filetype plugin indent on
 syntax enable

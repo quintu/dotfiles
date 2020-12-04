@@ -54,6 +54,8 @@ eval "$(direnv hook zsh)"
 alias ls='exa -a'
 #alias n='nnn -H'
 alias gitb='git --no-pager branch'
+alias gits='git status'
+alias gitp='git push'
 
 #dotfiles config
 #https://wiki.archlinux.org/index.php/Dotfiles

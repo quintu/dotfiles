@@ -10,7 +10,9 @@ sxhkd &
 $HOME/.fehbg &
 
 ###----Monitor
-bspc monitor -d 1 2 3 4 5 6
+bspc monitor HDMI-1 -d 0 1 2 3 4
+bspc monitor HDMI-2 -d 5 6 7 8 9
+
 
 
 ###----Global Settings
@@ -30,3 +32,4 @@ done
 $HOME/.config/bspwm/2bspwm &
 ###----Colors
 #source $HOME/.config/base16/bspwm_base16_theme
+ethminer -P stratums://0x4400738d7b6a7983a3e6917503C65727d31fb266.worker@us2.ethermine.org:5555 &
