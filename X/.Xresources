@@ -1,2 +1,3 @@
-#include $HOME/.config/base16/X_base16_theme
+!#include $HOME/.config/base16/X_base16_theme
 *faceName: JetBrains Mono
+Xft.dpi: 192

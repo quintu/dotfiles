@@ -10,12 +10,15 @@ sxhkd &
 $HOME/.fehbg &
 
 ###----Monitor
+# xrandr --output HDMI-1 --primary --mode 6144x3456+0+0 --output HDMI-2 --mode 6144x3456+6144+0 --right-of HDMI-1
+# xrandr --output HDMI-1 --primary --mode 3840x2160 --output HDMI-2 --mode 3840x2160 --right-of HDMI-1
 bspc monitor HDMI-1 -d 0 1 2 3 4
 bspc monitor HDMI-2 -d 5 6 7 8 9
 
 
 
 ###----Global Settings
+xrdb -merge ~/.config/X/.Xresources
 bspc config focus_follows_pointer true
 bspc config borderless_monocle true
 bspc config gapless_monocle true
@@ -23,13 +26,15 @@ bspc config automatic_scheme alternate
 
 BW=12
 bspc config border_width $BW
-bspc config window_gap -$(($BW - $(($BW/4))))
-for side in top right bottom left ; do
-	bspc config ${side}_padding 0
-	#-$(($BW - 10))
-done
+bspc config window_gap 20
+#bspc config border_width $BW
+#bspc config window_gap -$(($BW - $(($BW/4))))
+#for side in top right bottom left ; do
+#	bspc config ${side}_padding 0
+#	#-$(($BW - 10))
+#done
 
-$HOME/.config/bspwm/2bspwm &
+# $HOME/.config/bspwm/2bspwm &
 ###----Colors
 #source $HOME/.config/base16/bspwm_base16_theme
-ethminer -P stratums://0x4400738d7b6a7983a3e6917503C65727d31fb266.worker@us2.ethermine.org:5555 &
+# ethminer -P stratums://0x4400738d7b6a7983a3e6917503C65727d31fb266.worker@us2.ethermine.org:5555 &

@@ -1,0 +1,16 @@
+# file location: ~/.config/lftp
+# custom prompt
+set prompt "\n\[\e[0;32m\][lftp] \[\e[0;36m\]\u@\h \[\e[1;33m\]\w\n \[\e[0;32m\]→\[\e[0m\] "
+
+# list most recent files in dir
+alias lsr "cls --sort=date | head -n 9"
+
+# default ls is overly verbose
+alias ls cls -F
+alias q queue
+alias j jobs
+alias k kill
+# when downloading directories, get 4 files at a time, each in 4 segments
+alias m mirror --parallel=4 --use-pget-n=4
+# when downloading single files, download it in 8 segments
+alias p pget -n 8
