@@ -6,9 +6,8 @@ Plug 'bluz71/vim-nightfly-guicolors'
 Plug 'itchyny/lightline.vim'
 Plug 'jlanzarotta/bufexplorer'
 
-Plug 'neovim/nvim-lsp'
+Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
-Plug 'nvim-lua/diagnostic-nvim'
 Plug 'nvim-lua/lsp-status.nvim'
 Plug 'nvim-treesitter/nvim-treesitter'
 
@@ -23,7 +22,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'jpalardy/vim-slime'
 Plug 'rhysd/clever-f.vim'
-Plug 'dense-analysis/ale'
 
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-eunuch'
@@ -40,7 +38,6 @@ source $HOME/.config/nvim/config/mappings.vim
 source $HOME/.config/nvim/config/colors.vim
 
 source $HOME/.config/nvim/config/plugins/completion.vim
-source $HOME/.config/nvim/config/plugins/diagnostic.vim
 source $HOME/.config/nvim/config/plugins/lightline.vim
 source $HOME/.config/nvim/config/plugins/lf.vim
 source $HOME/.config/nvim/config/plugins/lsp.vim

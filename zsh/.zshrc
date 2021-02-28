@@ -56,6 +56,7 @@ alias ls='exa -a'
 alias gitb='git --no-pager branch'
 alias gits='git status'
 alias gitp='git push'
+alias python='python3'
 
 #dotfiles config
 #https://wiki.archlinux.org/index.php/Dotfiles
@@ -95,3 +96,5 @@ unset __conda_setup
 #source activate dl
 
 source /home/quint/.config/broot/launcher/bash/br
+
+export PATH="$HOME/.poetry/bin:$PATH"

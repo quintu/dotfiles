@@ -1,4 +1,4 @@
-let g:python3_host_prog="$HOME/.config/nvim/env/bin/python"
+let g:python3_host_prog="$HOME/.config/nvim/.venv/bin/python3"
 " let g:autoformat_autoindent = 0
 " let g:autoformat_retab = 0
 " let g:formatdef_yapf="'yapf -i --style $HOME/.config/yapf/style'"

@@ -1,12 +1,10 @@
-local nvim_lsp = require('nvim_lsp')
+local lspconfig = require('lspconfig')
 local completion = require('completion')
-local diagnostic = require('diagnostic')
 local lsp_status = require('lsp-status')
 
 local nvim_on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
     completion.on_attach(client)
-    diagnostic.on_attach(client)
     lsp_status.on_attach(client)
 
     vim.api.nvim_command('autocmd CursorHold <buffer> lua vim.lsp.util.show_line_diagnostics()')
@@ -22,29 +20,29 @@ end
 
 lsp_status.register_progress()
 
-nvim_lsp.clangd.setup{
+lspconfig.clangd.setup{
     on_attach = nvim_on_attach,
     capabilities = lsp_status.capabilities
 }
 
-nvim_lsp.cmake.setup{
+lspconfig.cmake.setup{
     on_attach = nvim_on_attach,
     capabilities = lsp_status.capabilities
 }
 
-nvim_lsp.pyls_ms.setup{
+lspconfig.pyls_ms.setup{
     on_attach=nvim_on_attach,
     callbacks = lsp_status.extensions.pyls_ms.setup(),
     settings = { python = { workspaceSymbols = { enabled = true }}},
     capabilities = lsp_status.capabilities
 }
 
-nvim_lsp.sumneko_lua.setup{
+lspconfig.sumneko_lua.setup{
     cmd = {"/home/quint/.cache/nvim/nvim_lsp/sumneko_lua/lua-language-server/bin/Linux/lua-language-server", "-E", "/home/quint/.cache/nvim/nvim_lsp/sumneko_lua/lua-language-server/main.lua"};
     on_attach=nvim_on_attach
 }
 
-nvim_lsp.vimls.setup{
+lspconfig.vimls.setup{
     capabilities = lsp_status.capabilities,
     on_attach=nvim_on_attach,
     cmd = { "vim-language-server", "--stdio" },
@@ -71,3 +69,10 @@ nvim_lsp.vimls.setup{
 	vimruntime = ""
     }
 }
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+	virtual_text = true,
+	signs = true,
+    }
+)
