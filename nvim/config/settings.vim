@@ -1,8 +1,4 @@
 let g:python3_host_prog="$HOME/.config/nvim/.venv/bin/python3"
-" let g:autoformat_autoindent = 0
-" let g:autoformat_retab = 0
-" let g:formatdef_yapf="'yapf -i --style $HOME/.config/yapf/style'"
-" let b:formatters_python = ['yapf']
 let g:tmux_navigator_save_on_switch = 1
 let g:mapleader = ';'
 set hidden
@@ -24,8 +20,6 @@ set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 set foldnestmax=3
 
-let g:ale_virtualenv_dir_names=["$HOME/.config/nvim/env"]
-
 filetype plugin indent on
 syntax enable
 
@@ -43,7 +37,7 @@ augroup END
 "Leave insert mode when leaving terminal buffer
 augroup bufterm
     au!
-    au BufWinEnter,WinEnter term://* startinsert
+    " au BufWinEnter,WinEnter term://* startinsert
     "au BufLeave term://* stopinsert
 augroup END
 
@@ -51,7 +45,7 @@ augroup END
 augroup bufleave
     au!
     " au BufWritePre * silent :Autoformat()
-    au BufLeave * update
+    " au BufLeave * update
 augroup END
 
 

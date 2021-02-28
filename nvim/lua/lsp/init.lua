@@ -1,14 +1,14 @@
 local lspconfig = require('lspconfig')
-local completion = require('completion')
+-- local completion = require('completion')
 local lsp_status = require('lsp-status')
 
 local nvim_on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-    completion.on_attach(client)
+    -- completion.on_attach(client)
     lsp_status.on_attach(client)
 
-    vim.api.nvim_command('autocmd CursorHold <buffer> lua vim.lsp.util.show_line_diagnostics()')
-    vim.fn.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", {noremap = true, silent = true})
+    vim.api.nvim_command('autocmd CursorHold <buffer> lua vim.lsp.diagnostic.show_line_diagnostics()')
+    -- vim.fn.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", {noremap = true, silent = true})
     vim.fn.nvim_set_keymap("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", {noremap = true, silent = true})
     vim.fn.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.implementation()<CR>", {noremap = true, silent = true})
     --  vim.fn.nvim_set_keymap("n", "<c-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", {noremap = true, silent = true})
@@ -30,16 +30,34 @@ lspconfig.cmake.setup{
     capabilities = lsp_status.capabilities
 }
 
-lspconfig.pyls_ms.setup{
-    on_attach=nvim_on_attach,
-    callbacks = lsp_status.extensions.pyls_ms.setup(),
-    settings = { python = { workspaceSymbols = { enabled = true }}},
+lspconfig.pyright.setup{
+    on_attach = nvim_on_attach,
     capabilities = lsp_status.capabilities
 }
 
+lspconfig.yamlls.setup{}
+
+-- TODO: update LS and update cmd
 lspconfig.sumneko_lua.setup{
-    cmd = {"/home/quint/.cache/nvim/nvim_lsp/sumneko_lua/lua-language-server/bin/Linux/lua-language-server", "-E", "/home/quint/.cache/nvim/nvim_lsp/sumneko_lua/lua-language-server/main.lua"};
-    on_attach=nvim_on_attach
+    cmd = {"/home/quint/.cache/nvim/nvim_lsp/sumneko_lua/lua-language-server/bin/Linux/lua-language-server", "-E", "/home/quint/.cache/nvim/nvim_lsp/sumneko_lua/lua-language-server/main.lua"},
+    on_attach=nvim_on_attach,
+    settings = {
+	Lua = {
+	    runtime = {
+		version = 'LuaJIT',
+		path = vim.split(package.path, ';'),
+	    },
+	    diagnostics = {
+		globals = {'vim'}
+	    },
+	    workspace = {
+		library = {
+		    [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+		    [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+		},
+	    }
+	}
+    }
 }
 
 lspconfig.vimls.setup{
